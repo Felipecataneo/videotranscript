@@ -1,13 +1,13 @@
 import os
 import streamlit as st
 from groq import Groq
-import moviepy.editor as mp
+from moviepy import *
 from pydub import AudioSegment
 
 # Função para extrair o áudio do vídeo
 def extract_audio(video_file):
     st.info("Extraindo áudio do vídeo...")
-    video = mp.VideoFileClip(video_file)
+    video = moviepy.VideoFileClip(video_file)
     audio_path = "temp_audio.wav"
     video.audio.write_audiofile(audio_path, codec="pcm_s16le")
     st.success("Áudio extraído com sucesso.")
